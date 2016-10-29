@@ -70,7 +70,6 @@ defmodule PhoenixVideoStream.VideoController do
   defp persist_file(video, %{path: temp_path}) do
     video_path = build_video_path(video)
     unless File.exists?(video_path) do
-      IEx.pry
       video_path |> Path.dirname() |> File.mkdir_p()
       File.copy!(temp_path, video_path)
     end
