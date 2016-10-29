@@ -14,10 +14,11 @@ defmodule PhoenixVideoStream.Video do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
+  @required_fields ~w(title video_file)
+  @optional_fields ~w(filename content_type path)
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :filename, :content_type, :path])
-    |> validate_required([:title, :video_file])
+    |> cast(params, @required_fields, @optional_fields)
     |> put_video_file()
   end
 

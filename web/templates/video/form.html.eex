@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= label f, :video_file, class: "control-label" %>
-    <%= text_input f, :video_file, required: true, class: "form-control" %>
+    <%= file_input f, :video_file, required: true, class: "form-control" %>
     <%= error_tag f, :video_file %>
   </div>
 

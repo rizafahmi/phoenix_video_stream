@@ -41,3 +41,4 @@ config :phoenix_video_stream, PhoenixVideoStream.Repo,
   database: "phoenix_video_stream_dev",
   hostname: "localhost",
   pool_size: 10
+config :phoenix_video_stream, :upload_dir, "/tmp/uploads/"
