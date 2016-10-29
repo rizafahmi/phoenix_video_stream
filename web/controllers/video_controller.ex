@@ -18,6 +18,8 @@ defmodule PhoenixVideoStream.VideoController do
 
     case Repo.insert(changeset) do
       {:ok, _video} ->
+        persist_file(video, video_params["video_file"])
+
         conn
         |> put_flash(:info, "Video created successfully.")
         |> redirect(to: video_path(conn, :index))
