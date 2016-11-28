@@ -11,7 +11,7 @@ config :phoenix_video_stream,
 
 # Configures the endpoint
 config :phoenix_video_stream, PhoenixVideoStream.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "0.0.0.0"],
   secret_key_base: "/zXleIA0BTHRIL773g+SqLkX3dNkx02YsGAJhYdrIxeEM/lCBUygMotbWzrICjP/",
   render_errors: [view: PhoenixVideoStream.ErrorView, accepts: ~w(html json)],
   pubsub: [name: PhoenixVideoStream.PubSub,
