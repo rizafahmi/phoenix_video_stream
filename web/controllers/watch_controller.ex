@@ -3,6 +3,7 @@ defmodule PhoenixVideoStream.WatchController do
   
   import PhoenixVideoStream.Util
   alias PhoenixVideoStream.Video
+  require IEx
 
   def show(%{req_headers: headers} = conn, %{"id" => id}) do
     video = Repo.get!(Video, id)
