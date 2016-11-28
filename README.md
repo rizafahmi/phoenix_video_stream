@@ -4,10 +4,10 @@ Video streaming with Elixir and Phoenix.
 
 ## TODO
 
-[] VideoJS resume last position (http://docs.videojs.com/docs/api/player.html#MethodscurrentTime)
-[ ] Add last position to Model
-[ ] Detect on mouse click or on keyboard type
-[ ] Update last position to the db/model
+- [ ] VideoJS resume last position (http://docs.videojs.com/docs/api/player.html#MethodscurrentTime)
+- [ ] Add last position to Model
+- [ ] Detect on mouse click or on keyboard type
+- [ ] Update last position to the db/model
 
 ## Usage
 
