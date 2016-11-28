@@ -14,25 +14,33 @@ defmodule PhoenixVideoStream.Video do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  @required_fields ~w(title video_file)
-  @optional_fields ~w(filename content_type path)
+  @required_fields ~w(title path)
+  @optional_fields ~w(filename content_type video_file)
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, @required_fields, @optional_fields)
-    |> put_video_file()
+    |> put_video_metadata()
   end
 
-  def put_video_file(changeset) do
+  def put_video_metadata(changeset) do
     case changeset do
-      %Ecto.Changeset{valid?: true, changes: %{video_file: video_file}} ->
-        path = Ecto.UUID.generate() <> Path.extname(video_file.filename)
+      %Ecto.Changeset{valid?: true, changes: %{path: path}} ->
+        content_type = get_file_type(path)
         changeset
-        |> put_change(:path, path)
-        |> put_change(:filename, video_file.filename)
-        |> put_change(:content_type, video_file.content_type)
+        |> put_change(:filename, path)
+        |> put_change(:content_type, content_type)
       _ ->
         changeset
     end
 
+  end
+
+  defp get_file_type(path) do
+    extraction = String.split(path, ".")
+    extension = Enum.at(extraction, -1)
+    case extension do
+      "mkv" -> "video/webm"
+      _ -> "video/" <> extension
+    end
   end
 end
